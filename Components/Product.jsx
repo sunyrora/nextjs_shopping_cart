@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 const Product = ({ product }) => {
-  const { _id, name, description, price, imageUrl } = product;
+  const { id, name, description, price, imageUrl } = product;
 
   return (
     <div className={styles.product}>
@@ -14,7 +14,7 @@ const Product = ({ product }) => {
         <p className={styles.info__description}>{description}</p>
         <p className={styles.info__name}>{name}</p>
         <p className={styles.info__price}>${price}</p>
-        <Link href={`/product/${_id}`}>
+        <Link href={`/product/${id}`}>
           <a className={styles.info__button}>View</a>
         </Link>
       </div>

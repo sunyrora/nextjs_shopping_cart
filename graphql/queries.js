@@ -13,4 +13,17 @@ const GET_PRODUCT_LIST = gql`
   }
 `;
 
-export { GET_PRODUCT_LIST };
+const GET_PRODUCT_BY_ID = gql`
+  query getProductById($id: ID!) {
+    product(id: $id) {
+      id
+      name
+      description
+      price
+      countInStock
+      imageUrl
+    }
+  }
+`;
+
+export { GET_PRODUCT_LIST, GET_PRODUCT_BY_ID };
