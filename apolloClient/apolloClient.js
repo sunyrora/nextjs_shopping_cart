@@ -1,12 +1,22 @@
 import { InMemoryCache, ApolloClient, HttpLink } from "@apollo/client";
 
-// ApolloClient
-let client;
+/* let apolloClient = null;
+
+const createApolloClient = () => {
+  const cache = new InMemoryCache();
+  return new ApolloClient({
+    uri: "http://localhost:3000/api/graphql",
+    cache: cache,
+  });
+};
+
+const useApollo = () => (apolloClient = apolloClient ?? createApolloClient());
+
+export { useApollo }; */
 
 // cache
 const cache = new InMemoryCache();
 
-// export const apolloClient = () => client ?? createApolloClient();
 const apolloClient = new ApolloClient({
   uri: "http://localhost:3000/api/graphql",
   cache: cache,
