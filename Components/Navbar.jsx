@@ -7,7 +7,7 @@ export default function Navbar() {
     <nav className={styles.navbar}>
       <div className={styles.navbar__logo}>
         <h2>
-          <Link href="/">SJ Shopping cart</Link>
+          <Link href="/">Next.js Shopping cart</Link>
         </h2>
       </div>
 
