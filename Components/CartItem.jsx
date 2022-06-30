@@ -9,10 +9,7 @@ const CartItem = ({ item, onClickDelete, onChangeQty }) => {
       <div className={styles.cartitem__image}>
         <img src={item.imageUrl} alt={item.name} />
       </div>
-      <Link
-        href={`/product/${item.productId}`}
-        className={styles.cartitem__name}
-      >
+      <Link href={`/product/${item.id}`} className={styles.cartitem__name}>
         <a>
           <p>{item.name}</p>
         </a>
@@ -24,7 +21,7 @@ const CartItem = ({ item, onClickDelete, onChangeQty }) => {
       <select
         className={styles.cartitem__select}
         value={item.qty}
-        onChange={(e) => onChangeQty(item.productId, e.target.value)}
+        onChange={(e) => onChangeQty(item.id, e.target.value)}
       >
         {[...Array(item.countInStock).keys()].map((x) => (
           <option key={x + 1} value={x + 1}>
@@ -35,7 +32,7 @@ const CartItem = ({ item, onClickDelete, onChangeQty }) => {
 
       <button
         className={styles.cartitem__deletebtn}
-        onClick={(e) => onClickDelete(item.productId)}
+        onClick={(e) => onClickDelete(item.id)}
       >
         <FaTrash />
       </button>
