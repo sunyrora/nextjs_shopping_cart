@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const typeDefs = gql`
-  type cart {
+  type Cart {
     itemCount: Int!
     subTotal: Int!
     cartItems: [Product]
