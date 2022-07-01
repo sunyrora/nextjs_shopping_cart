@@ -10,6 +10,10 @@
   place-items: center;
 }
 
+.cartitem__image img {
+  width: 100%;
+}
+
 .cartitem__name {
   text-decoration: none;
   color: #171717;
