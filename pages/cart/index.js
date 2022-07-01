@@ -1,12 +1,11 @@
+import { useQuery, useReactiveVar } from "@apollo/client";
+import { cart, initialCart } from "../../apolloClient/cache";
+import { GET_CART_ITEMS } from "../../apolloClient/cartQueries";
 import CartScreen from "../../Containers/CartScreen";
 
-const cart = {
-  itemCount: 0,
-  subTotal: 0,
-  cartItems: [],
-};
 export default function CartPage() {
-  return <CartScreen cart={cart} />;
+  const cartItems = useReactiveVar(cart);
+  return <CartScreen cart={cartItems} />;
 }
 
 // export async function getServerSideProps(ctx) {
