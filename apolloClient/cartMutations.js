@@ -42,11 +42,31 @@ const addToCart = (product, qty) => {
     cartItems = [...existing.cartItems, addItem];
   }
 
-  console.log("new cartItems", cartItems);
   const itemCount = getCartItemCount(cartItems);
   const subTotal = getCartSubTotal(cartItems);
 
   cart({ itemCount, subTotal, cartItems: [...cartItems] });
 };
 
-export { addToCart };
+const removeFromCart = (id) => {
+  const existing = cart();
+
+  const cartItems = existing?.cartItems?.filter((item) => item.id !== id);
+  const itemCount = getCartItemCount(cartItems);
+  const subTotal = getCartSubTotal(cartItems);
+
+  cart({ itemCount, subTotal, cartItems: [...cartItems] });
+};
+
+const modifyQty = (id, qty) => {
+  const existing = cart();
+  const cartItems = existing?.cartItems?.map((item) =>
+    item.id === id ? { ...item, qty } : item
+  );
+  const itemCount = getCartItemCount(cartItems);
+  const subTotal = getCartSubTotal(cartItems);
+
+  cart({ itemCount, subTotal, cartItems: [...cartItems] });
+};
+
+export { addToCart, removeFromCart, modifyQty };

@@ -1,14 +1,13 @@
 import Link from "next/link";
 import styles from "./styles/CartScreen.module.css";
 
+import { removeFromCart, modifyQty } from "../apolloClient/cartMutations";
+
 // Components
 import CartItem from "../Components/CartItem";
 
 const CartScreen = ({ cart }) => {
-  const { cartItems, itemCount, subTotal } = cart;
-
-  const handleRemoveFromCart = (e) => {};
-  const handleQtyChange = (e) => {};
+  const { cartItems } = cart;
 
   return (
     <div className={styles.cartscreen}>
@@ -26,8 +25,8 @@ const CartScreen = ({ cart }) => {
             <CartItem
               key={item.id}
               item={item}
-              onClickDelete={handleRemoveFromCart}
-              onChangeQty={handleQtyChange}
+              onClickDelete={removeFromCart}
+              onChangeQty={modifyQty}
             />
           ))
         )}

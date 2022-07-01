@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import { FaTrash } from "react-icons/fa";
 import styles from "./styles/CartItem.module.css";
 

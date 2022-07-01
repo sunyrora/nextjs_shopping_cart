@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./styles/ProductDetails.module.css";
 
-import * as CartMutations from "../apolloClient/cartMutations";
+import { addToCart } from "../apolloClient/cartMutations";
 
 const ProductDetails = ({ product }) => {
   const [qty, setQty] = useState(1);
@@ -47,10 +47,7 @@ const ProductDetails = ({ product }) => {
             </select>
           </p>
           <p>
-            <button
-              type="button"
-              onClick={(e) => CartMutations.addToCart(product, qty)}
-            >
+            <button type="button" onClick={(e) => addToCart(product, qty)}>
               Add to cart
             </button>
           </p>
