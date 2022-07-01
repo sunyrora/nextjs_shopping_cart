@@ -7,7 +7,11 @@ const cors = Cors({
   allowMethods: ["POST", "OPTIONS"],
 });
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({
+  typeDefs,
+  resolvers,
+  introspection: process.env.NODE_ENV !== "production",
+});
 
 const startServer = apolloServer.start();
 
