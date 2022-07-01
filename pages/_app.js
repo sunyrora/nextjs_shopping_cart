@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import { ApolloProvider, useApolloClient } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client";
 import apolloClient from "../apolloClient/apolloClient";
 import Navbar from "../Components/Navbar";
 

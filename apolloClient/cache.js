@@ -1,5 +1,4 @@
 import { InMemoryCache, ReactiveVar, makeVar } from "@apollo/client";
-
 /*
 @ catItems 
 [{ 
@@ -18,7 +17,6 @@ export const initialCart = {
   cartItems: [],
 };
 export const cart = makeVar(initialCart);
-
 export const cache = new InMemoryCache({
   typePolicies: {
     Query: {

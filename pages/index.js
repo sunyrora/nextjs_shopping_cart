@@ -1,12 +1,22 @@
+import { useEffect } from "react";
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
 import ProductList from "../Containers/ProductList";
 import apolloClient from "../apolloClient/apolloClient";
 import { GET_PRODUCT_LIST } from "../graphql/queries";
+import { setCart } from "../apolloClient/cartMutations";
+import { KEY_CART_LOCALSTORAGE } from "../utils/constants";
 
 export default function Home({ products }) {
+  useEffect(() => {
+    // To make cart items stay when refresh page
+    const cartLocalStorage = localStorage.getItem(KEY_CART_LOCALSTORAGE);
+    if (cartLocalStorage) {
+      setCart(JSON.parse(cartLocalStorage));
+    }
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,8 +37,6 @@ export const getServerSideProps = async () => {
   const { data } = await apolloClient.query({
     query: GET_PRODUCT_LIST,
   }); // your fetch function here
-
-  // console.log("data: ", data);
 
   return {
     props: {

@@ -1,3 +1,4 @@
+import { KEY_CART_LOCALSTORAGE } from "../utils/constants";
 import { cart } from "./cache";
 
 const getCartItemCount = (cartItems) =>
@@ -7,6 +8,11 @@ const getCartSubTotal = (cartItems) =>
     (price, item) => price + Number(item?.price) * Number(item?.qty),
     0
   );
+
+const setCart = (value) => {
+  value ? cart(value) : cart();
+  localStorage.setItem(KEY_CART_LOCALSTORAGE, JSON.stringify(cart()));
+};
 
 // mutations for static states on client side
 const addToCart = (product, qty) => {
@@ -46,6 +52,8 @@ const addToCart = (product, qty) => {
   const subTotal = getCartSubTotal(cartItems);
 
   cart({ itemCount, subTotal, cartItems: [...cartItems] });
+
+  localStorage.setItem(KEY_CART_LOCALSTORAGE, JSON.stringify(cart()));
 };
 
 const removeFromCart = (id) => {
@@ -56,6 +64,7 @@ const removeFromCart = (id) => {
   const subTotal = getCartSubTotal(cartItems);
 
   cart({ itemCount, subTotal, cartItems: [...cartItems] });
+  localStorage.setItem(KEY_CART_LOCALSTORAGE, JSON.stringify(cart()));
 };
 
 const modifyQty = (id, qty) => {
@@ -67,6 +76,7 @@ const modifyQty = (id, qty) => {
   const subTotal = getCartSubTotal(cartItems);
 
   cart({ itemCount, subTotal, cartItems: [...cartItems] });
+  localStorage.setItem(KEY_CART_LOCALSTORAGE, JSON.stringify(cart()));
 };
 
-export { addToCart, removeFromCart, modifyQty };
+export { setCart, addToCart, removeFromCart, modifyQty };
