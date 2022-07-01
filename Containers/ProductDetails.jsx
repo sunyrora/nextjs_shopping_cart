@@ -1,10 +1,10 @@
 import { useState } from "react";
 import styles from "./styles/ProductDetails.module.css";
 
+import * as CartMutations from "../apolloClient/cartMutations";
+
 const ProductDetails = ({ product }) => {
   const [qty, setQty] = useState(1);
-
-  const handleAddToCart = (e) => {};
 
   return (
     <div className={styles.productscreen}>
@@ -47,7 +47,10 @@ const ProductDetails = ({ product }) => {
             </select>
           </p>
           <p>
-            <button type="button" onClick={handleAddToCart}>
+            <button
+              type="button"
+              onClick={(e) => CartMutations.addToCart(product, qty)}
+            >
               Add to cart
             </button>
           </p>
