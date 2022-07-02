@@ -31,7 +31,6 @@ const addToCart = (product, qty) => {
     cartItems = existing.cartItems.map((item) => {
       if (item.id === existItem.id) {
         const newQty = Number(item.qty) + Number(addItem.qty);
-        console.log("newQty: ", newQty);
         if (newQty > addItem.countInStock) {
           alert(`Only ${item.countInStock} product(s) in stok.
             You have already added ${item.qty} into your cart.
