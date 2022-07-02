@@ -31,9 +31,26 @@ export default function Home({ products }) {
   );
 }
 
+// This function gets called at build time on server-side.
+// It may be called again, on a serverless function, if
+// revalidation is enabled and a new request comes in
+export const getStaticProps = async () => {
+  const { data } = await apolloClient.query({ query: GET_PRODUCT_LIST });
+
+  return {
+    props: {
+      products: data?.products,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 60,
+  };
+};
+
 // You should use getServerSideProps when:
 // - Only if you need to pre-render a page whose data must be fetched at request time
-export const getServerSideProps = async () => {
+/* export const getServerSideProps = async () => {
   const { data } = await apolloClient.query({
     query: GET_PRODUCT_LIST,
   }); // your fetch function here
@@ -43,4 +60,4 @@ export const getServerSideProps = async () => {
       products: data.products,
     },
   };
-};
+}; */
