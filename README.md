@@ -1,30 +1,15 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app),
+This is a [Next.js](https://nextjs.org/) **`Shopping cart`** project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app),
 
 - GraphQL with ApolloServer/Client.
 - Local state management with ApolloClient's ReactiveVariable.
 
-[View Deom page](https://nextjs-shopping-cart-n6t81ze2a-sunyrora.vercel.app/)
+[View Deom page](https://nextjs-shopping-cart-eight.vercel.app/)
 
-[<img src="./doc_img/demoImg.png" height="200" />](https://62b5a6d7ca5cd90080189357--keen-truffle-fc8264.netlify.app/)
+[<img src="./doc_img/demoImg.png" height="200" />](https://nextjs-shopping-cart-eight.vercel.app/)
 
 ## Getting Started
 
-1. create **`.env`** or **`.env.development`** file in the project `root` and define variables like example below.
-
-```
-
-NODE_ENV='development'
-PORT=3000 # any port number you want
-GRAPH_URI=http://localhost:${PORT}/api/graphql
-
-```
-
-This <mark>**GRAPH_URI**</mark> will be the graphql endpoint.
-It's for the development, when you deploy it on a host server, set **`GRAPH_URI`** environment variable to the hosted adress on your hosting service site like below.
-
-> [YOUR HOST ADRESS]**/api/graphql**
-
-2. rund this command below on your console
+run this command below in your console
 
 ```bash
 npm install
@@ -32,12 +17,33 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The server will be started with a port number 3000.
 
-> Port number will be the [PORT] defined in the `.env` file.
+Open http://localhost:3000 with your browser to see the result.
+
+If you want to change the port number:
+
+> 1. Open the `package.json` file.
+> 2. On `dev` script, change the --port number to the number you want.
+> 3. Open the `next.config.js` file.
+> 4. Change the value of the `PORT` to the same number you defiend above in the package.json
 
 \
 <br>
+
+## In the `next.config.js` file, ther is <mark>`GRAPH_URI`</mark> under the `env` configuration. This will be the graphql endpoint.
+
+> So the default value here is: http://localhost:3000/api/graphql
+
+<br>
+
+## It's for the development, when you deploy it on a host server, set **`GRAPH_URI`** environment variable to the hosted adress on your hosting service site like below.
+
+> [YOUR HOST ADRESS]**/api/graphql**
+
+\
+<br>
+
 ---
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
